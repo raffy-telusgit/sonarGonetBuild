@@ -9,8 +9,19 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   network_interface {
-    network = "default"
-    access_config {
-    }
+    network    = google_compute_network.vpc_network.id
+    subnetwork = google_compute_subnetwork.vpc_subnet.id
   }
+}
+
+resource "google_compute_network" "vpc_network" {
+  name                    = "custom-network"
+  auto_create_subnetworks = false
+}
+
+resource "google_compute_subnetwork" "vpc_subnet" {
+  name          = "custom-subnet"
+  ip_cidr_range = "10.0.0.0/16"
+  region        = "northamerica-northeast1"
+  network       = google_compute_network.vpc_network.id
 }
