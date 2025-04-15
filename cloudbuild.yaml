@@ -1,12 +1,20 @@
-# cloudbuild.yaml
-
 steps:
-  - id: 'terraform init'
-    name: 'hashicorp/terraform:1.0.0'
-    script: terraform init
-  - id: 'terraform plan'
-    name: 'hashicorp/terraform:1.0.0'
-    script: terraform plan
-  - id: 'terraform apply'
-    name: 'hashicorp/terraform:1.0.0'
-    script: terraform apply --auto-approve
+  - id: 'tf init'
+    name: 'hashicorp/terraform:1.7.0'
+    args:
+      - 'init'
+
+  - id: 'tf plan'
+    name: 'hashicorp/terraform:1.7.0'
+    args:
+      - 'plan'
+
+  - id: 'tf apply'
+    name: 'hashicorp/terraform:1.7.0'
+    args:
+      - 'apply'
+      - '-auto-approve'
+
+# Optional but recommended settings
+options:
+  logging: CLOUD_LOGGING_ONLY
