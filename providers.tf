@@ -11,7 +11,7 @@ terraform {
 }
 
 provider "google" {
-  project = "sonar-gonet-lab-env-lab"
+  project = "sonar-gonet-lab-env-lab-0308cf"
   region  = var.region
   zone    = var.zone
 }
