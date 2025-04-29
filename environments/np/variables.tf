@@ -7,13 +7,13 @@ variable "project_id" {
 variable "region" {
   description = "The region to deploy resources to"
   type        = string
-  default     = "us-central1"
+  default     = "northamerica-northeast1"
 }
 
 variable "zone" {
   description = "The zone to deploy resources to"
   type        = string
-  default     = "us-central1-a"
+  default     = "northamerica-northeast1-a"
 }
 
 variable "network_name" {

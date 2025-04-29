@@ -1,6 +1,6 @@
 project_id = "sonar-gonet-lab-env-lab-0308cf"
-region = "us-central1"
-zone = "us-central1-a"
+region = "northamerica-northeast1"
+zone = "northamerica-northeast1-a"
 network_name = "np-vpc"
 subnet_name = "np-subnet"
 subnet_cidr = "10.0.0.0/24"
