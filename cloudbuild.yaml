@@ -24,7 +24,7 @@ steps:
       - '-c'
       - |
         cd environments/np
-        terraform plan -var-file=variables.tf -out=tfplan
+        terraform plan -out=tfplan
 
   - id: 'tf apply'
     name: 'hashicorp/terraform:1.7.0'
