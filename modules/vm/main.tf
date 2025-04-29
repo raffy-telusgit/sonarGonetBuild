@@ -12,9 +12,6 @@ resource "google_compute_instance" "vm_instance" {
 
   network_interface {
     subnetwork = var.subnetwork
-    access_config {
-      // Ephemeral IP
-    }
   }
 
   tags = var.tags
