@@ -38,3 +38,51 @@ output "vpc_subnet_name" {
   description = "The name of the VPC subnet"
   value       = module.vpc.subnet_name
 }
+
+module "cloudsql" {
+  source                  = "../../modules/cloudsql"
+  project_id              = var.project_id
+  db_server_name          = var.db_server_name
+  db_name                 = var.db_name
+  db_version              = var.db_version
+  availability_type       = var.availability_type
+  backup_start_time       = var.backup_start_time
+  backup_location         = var.backup_location
+  maintenance_window_hour = var.maintenance_window_hour
+  maintenance_window_day  = var.maintenance_window_day
+  database_flags          = var.database_flags
+  query_insights_enabled  = var.query_insights_enabled
+  query_string_length     = var.query_string_length
+  deletion_policy         = var.deletion_policy
+  psc_config              = var.psc_config
+}
+
+output "cloudsql_instance_name" {
+  description = "The name of the Cloud SQL instance"
+  value       = module.cloudsql.instance_name
+}
+
+output "cloudsql_connection_name" {
+  description = "The connection name of the Cloud SQL instance"
+  value       = module.cloudsql.connection_name
+}
+
+output "cloudsql_private_ip" {
+  description = "The private IP address of the Cloud SQL instance"
+  value       = module.cloudsql.private_ip_address
+}
+
+output "cloudsql_psc_endpoint" {
+  description = "The Private Service Connect endpoint for the Cloud SQL instance"
+  value       = module.cloudsql.psc_service_attachment_uri
+}
+
+output "cloudsql_database_name" {
+  description = "The name of the database"
+  value       = module.cloudsql.database_name
+}
+
+output "cloudsql_self_link" {
+  description = "The URI of the Cloud SQL instance"
+  value       = module.cloudsql.self_link
+}
