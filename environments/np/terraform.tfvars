@@ -25,5 +25,5 @@ query_string_length     = "2056"
 deletion_policy         = "DELETE"
 psc_config = {
   enabled                   = true
-  allowed_consumer_projects = ["sonar-gonet-lab-env-lab-0308cf", "project-2"]
+  allowed_consumer_projects = ["sonar-gonet-lab-env-lab-0308cf"]
 }
