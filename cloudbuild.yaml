@@ -1,20 +1,46 @@
 steps:
   - id: 'tf init'
     name: 'hashicorp/terraform:1.7.0'
+    entrypoint: 'sh'
     args:
-      - 'init'
+      - '-c'
+      - |
+        cd environments/np
+        terraform init -backend-config="bucket=${_TERRAFORM_STATE_BUCKET}"
+
+  - id: 'tf validate'
+    name: 'hashicorp/terraform:1.7.0'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        cd environments/np
+        terraform validate
 
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.7.0'
+    entrypoint: 'sh'
     args:
-      - 'plan'
+      - '-c'
+      - |
+        cd environments/np
+        terraform plan -var-file=variables.tf -out=tfplan
 
   - id: 'tf apply'
     name: 'hashicorp/terraform:1.7.0'
+    entrypoint: 'sh'
     args:
-      - 'apply'
-      - '-auto-approve'
+      - '-c'
+      - |
+        cd environments/np
+        terraform apply -auto-approve tfplan
 
 # Optional but recommended settings
 options:
   logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _TERRAFORM_STATE_BUCKET: sonar-gonet-lab-env-lab-tfstate
+
+# Set the following environment variables in your Cloud Build trigger
+# GOOGLE_PROJECT: ${PROJECT_ID}
