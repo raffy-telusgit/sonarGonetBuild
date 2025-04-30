@@ -53,7 +53,7 @@ variable "database_flags" {
 variable "query_insights_enabled" {
   type        = bool
   description = "Whether query insights are enabled"
-  default     = true
+  default     = false
 }
 
 variable "query_string_length" {

@@ -25,7 +25,7 @@ resource "google_sql_database_instance" "instance" {
       query_insights_enabled  = var.query_insights_enabled
       query_string_length    = var.query_string_length
       record_application_tags = true
-      record_client_address  = true
+      record_client_address  = false
     }
 
     dynamic "database_flags" {
