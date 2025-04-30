@@ -47,10 +47,10 @@ resource "google_sql_database_instance" "instance" {
     }
   }
 
-  deletion_protection = var.deletion_policy == "PROTECT" ? true : false
+  deletion_protection = false
 
   lifecycle {
-    prevent_destroy = var.deletion_policy == "PROTECT" ? true : false
+    prevent_destroy = false
   }
 }
 
