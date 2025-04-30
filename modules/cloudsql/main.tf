@@ -47,7 +47,7 @@ resource "google_sql_database_instance" "instance" {
     }
   }
 
-  deletion_protection = var.deletion_policy
+   deletion_policy = var.deletion_policy
 }
 
 resource "google_sql_database" "database" {
