@@ -47,11 +47,12 @@ resource "google_sql_database_instance" "instance" {
     }
   }
 
-   deletion_policy = var.deletion_policy
+   
 }
 
 resource "google_sql_database" "database" {
   name     = var.db_name
   instance = google_sql_database_instance.instance.name
   project  = var.project_id
+  deletion_policy = var.deletion_policy
 }
