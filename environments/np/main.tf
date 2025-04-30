@@ -53,7 +53,7 @@ module "cloudsql" {
   database_flags          = var.database_flags
   query_insights_enabled  = var.query_insights_enabled
   query_string_length     = var.query_string_length
-  deletion_policy         = var.deletion_policy
+  deletion_protection     = var.deletion_protection
   psc_config              = var.psc_config
 }
 

@@ -9,7 +9,7 @@ vm_machine_type = "e2-medium"
 project_terraform_state_gcs_bucket_name = "sonar-gonet-lab-env-lab-tfstate"
 
 # Cloud SQL configuration
-db_server_name          = "SonarGonetPostgressTestNPLabvpc"
+db_server_name          = "sonar-gonet-postgres-np"
 db_name                 = "SonarGonetPostgressTestDB"
 db_version              = "POSTGRES_16"
 availability_type       = "REGIONAL"
@@ -22,7 +22,7 @@ database_flags          = {
 }
 query_insights_enabled  = true
 query_string_length     = "2056"
-deletion_policy         = "DELETE"
+deletion_protection     = true
 psc_config = {
   enabled                   = true
   allowed_consumer_projects = ["sonar-gonet-lab-env-lab-0308cf"]

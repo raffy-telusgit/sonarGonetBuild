@@ -107,9 +107,10 @@ variable "query_string_length" {
   description = "The length of the query string for query insights"
 }
 
-variable "deletion_policy" {
-  type        = string
-  description = "The deletion policy for the Cloud SQL instance"
+variable "deletion_protection" {
+  type        = bool
+  description = "Whether or not to allow Terraform to destroy the instance"
+  default     = true
 }
 
 variable "psc_config" {

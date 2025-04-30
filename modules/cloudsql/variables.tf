@@ -62,10 +62,10 @@ variable "query_string_length" {
   default     = "1024"
 }
 
-variable "deletion_policy" {
-  type        = string
-  description = "The deletion policy for the Cloud SQL instance"
-  default     = "DELETE"
+variable "deletion_protection" {
+  type        = bool
+  description = "Whether or not to allow Terraform to destroy the instance"
+  default     = true
 }
 
 variable "psc_config" {
