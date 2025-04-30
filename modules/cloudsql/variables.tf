@@ -7,6 +7,11 @@ variable "db_server_name" {
   type        = string
   description = "The name of the Cloud SQL server"
 }
+variable "instance_tier" {
+  type = string
+  description = "the instance tier of the db"
+  default = "db-f1-micro"
+}
 
 variable "db_name" {
   type        = string

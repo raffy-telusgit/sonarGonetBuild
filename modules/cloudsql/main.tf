@@ -5,7 +5,7 @@ resource "google_sql_database_instance" "instance" {
   region           = var.backup_location
 
   settings {
-    tier              = "db-custom-2-7680"
+    tier              = var.instance_tier
     availability_type = var.availability_type
 
     backup_configuration {
