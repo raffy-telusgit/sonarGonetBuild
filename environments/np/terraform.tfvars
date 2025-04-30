@@ -20,7 +20,7 @@ maintenance_window_day  = "6"
 database_flags          = {
   max_connections = "20"
 }
-query_insights_enabled  = false
+#query_insights_enabled  = false
 query_string_length     = "2056"
 deletion_protection     = true
 psc_config = {

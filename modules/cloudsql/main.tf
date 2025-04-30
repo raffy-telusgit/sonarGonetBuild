@@ -21,13 +21,6 @@ resource "google_sql_database_instance" "instance" {
       update_track = "stable"
     }
 
-    insights_config {
-      query_insights_enabled  = var.query_insights_enabled
-      query_string_length    = var.query_string_length
-      record_application_tags = true
-      record_client_address  = false
-    }
-
     dynamic "database_flags" {
       for_each = var.database_flags
       content {

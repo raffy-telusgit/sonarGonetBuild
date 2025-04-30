@@ -51,7 +51,7 @@ module "cloudsql" {
   maintenance_window_hour = var.maintenance_window_hour
   maintenance_window_day  = var.maintenance_window_day
   database_flags          = var.database_flags
-  query_insights_enabled  = var.query_insights_enabled
+#  query_insights_enabled  = var.query_insights_enabled
   query_string_length     = var.query_string_length
   deletion_protection     = var.deletion_protection
   psc_config              = var.psc_config
