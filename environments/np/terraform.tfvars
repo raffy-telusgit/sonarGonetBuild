@@ -11,7 +11,7 @@ project_terraform_state_gcs_bucket_name = "sonar-gonet-lab-env-lab-tfstate"
 # Cloud SQL configuration
 db_server_name          = "sonar-gonet-postgres-np"
 db_name                 = "SonarGonetPostgressTestDB"
-db_version              = "POSTGRES_16"
+db_version              = "POSTGRES_14"
 availability_type       = "REGIONAL"
 backup_start_time       = "06:00"
 backup_location         = "northamerica-northeast1"

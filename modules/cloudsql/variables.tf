@@ -9,8 +9,8 @@ variable "db_server_name" {
 }
 variable "instance_tier" {
   type = string
-  description = "the instance tier of the db"
-  default = "db-f1-micro"
+  description = "The instance tier of the db (using db-custom-* for older PostgreSQL versions)"
+  default = "db-custom-2-7680"
 }
 
 variable "db_name" {
