@@ -53,7 +53,8 @@ module "cloudsql" {
   database_flags          = var.database_flags
   # query_insights_enabled is not supported when using Private Service Connect (PSC)
   # query_insights_enabled  = var.query_insights_enabled
-  query_string_length     = var.query_string_length
+  # query_string_length is not used when PSC is enabled
+  # query_string_length     = var.query_string_length
   deletion_protection     = var.deletion_protection
   psc_config              = var.psc_config
 }

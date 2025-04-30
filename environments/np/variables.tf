@@ -99,12 +99,14 @@ variable "database_flags" {
 
 variable "query_insights_enabled" {
   type        = bool
-  description = "Whether query insights are enabled"
+  description = "Whether query insights are enabled (not supported with PSC)"
+  default     = false
 }
 
 variable "query_string_length" {
   type        = string
-  description = "The length of the query string for query insights"
+  description = "The length of the query string for query insights (not used when PSC is enabled)"
+  default     = "1024"
 }
 
 variable "deletion_protection" {
