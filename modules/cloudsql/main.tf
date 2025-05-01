@@ -31,7 +31,7 @@ resource "google_sql_database_instance" "instance" {
 
     ip_configuration {
       ipv4_enabled                                  = false
-      private_network                               = null
+      private_network                               = var.network
       enable_private_path_for_google_cloud_services = true
       psc_config {
         psc_enabled               = var.psc_config.enabled

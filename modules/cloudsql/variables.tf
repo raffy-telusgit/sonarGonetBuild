@@ -80,3 +80,8 @@ variable "psc_config" {
   })
   description = "Private Service Connect configuration"
 }
+
+variable "network" {
+  type        = string
+  description = "The VPC network self-link to which the Cloud SQL instance should be connected"
+}

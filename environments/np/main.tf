@@ -76,6 +76,7 @@ module "cloudsql" {
   # query_string_length     = var.query_string_length
   deletion_protection     = var.deletion_protection
   psc_config              = var.psc_config
+  network                 = module.vpc.network_self_link
 }
 
 output "cloudsql_instance_name" {
