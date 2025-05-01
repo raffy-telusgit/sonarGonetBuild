@@ -18,7 +18,11 @@ This repository contains Terraform configurations for deploying infrastructure o
 │   │   ├── main.tf
 │   │   ├── outputs.tf
 │   │   └── variables.tf
-│   └── vpc/
+│   ├── vpc/
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── psc/
 │       ├── main.tf
 │       ├── outputs.tf
 │       └── variables.tf
@@ -51,6 +55,13 @@ Creates a Google Compute Engine instance with internal network access only.
 ### VPC Module
 
 Creates a VPC network with a subnet and firewall rules.
+
+### PSC Module
+
+Creates a Private Service Connect endpoint with the following features:
+- Global internal address for PSC endpoint
+- Global forwarding rule for routing traffic to Google APIs
+- Secure access to Google services through private network
 
 ### Cloud SQL Module
 

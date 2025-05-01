@@ -8,6 +8,15 @@ module "vpc" {
   subnet_cidr  = var.subnet_cidr
 }
 
+module "psc" {
+  source = "../../modules/psc"
+
+  project_id   = var.project_id
+  network_name = var.network_name
+  network_id   = module.vpc.network_id
+  psc_address  = var.psc_address
+}
+
 module "vm" {
   source = "../../modules/vm"
 
@@ -37,6 +46,16 @@ output "vpc_network_name" {
 output "vpc_subnet_name" {
   description = "The name of the VPC subnet"
   value       = module.vpc.subnet_name
+}
+
+output "psc_name" {
+  description = "The name of the Private Service Connect endpoint"
+  value       = module.psc.private_service_connect_name
+}
+
+output "psc_ip_address" {
+  description = "The IP address of the Private Service Connect endpoint"
+  value       = module.psc.private_service_connect_ip_address
 }
 
 module "cloudsql" {

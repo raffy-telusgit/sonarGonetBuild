@@ -122,3 +122,9 @@ variable "psc_config" {
   })
   description = "Private Service Connect configuration"
 }
+
+variable "psc_address" {
+  description = "The IP address for the Private Service Connect endpoint"
+  type        = string
+  default     = "10.3.0.5"
+}
