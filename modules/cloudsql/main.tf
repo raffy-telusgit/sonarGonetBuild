@@ -44,7 +44,7 @@ resource "google_sql_database_instance" "instance" {
 }
 
 resource "google_sql_database_instance" "instance_update" {
-  name                = var.db_server_name
+  name                = "${var.db_server_name}-replica"
   project             = var.project_id
   region              = var.backup_location
   database_version    = var.db_version

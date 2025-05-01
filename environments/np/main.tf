@@ -75,24 +75,34 @@ module "cloudsql" {
   vpc_connection          = module.vpc.private_vpc_connection
 }
 
-output "cloudsql_instance_name" {
-  description = "The name of the Cloud SQL instance"
-  value       = module.cloudsql.instance_name
+output "cloudsql_primary_instance_name" {
+  description = "The name of the primary Cloud SQL instance"
+  value       = module.cloudsql.primary_instance_name
 }
 
-output "cloudsql_connection_name" {
-  description = "The connection name of the Cloud SQL instance"
-  value       = module.cloudsql.connection_name
+output "cloudsql_replica_instance_name" {
+  description = "The name of the replica Cloud SQL instance"
+  value       = module.cloudsql.replica_instance_name
 }
 
-output "cloudsql_private_ip" {
-  description = "The private IP address of the Cloud SQL instance"
-  value       = module.cloudsql.private_ip_address
+output "cloudsql_primary_connection_name" {
+  description = "The connection name of the primary Cloud SQL instance"
+  value       = module.cloudsql.primary_connection_name
 }
 
-output "cloudsql_psc_endpoint" {
-  description = "The Private Service Connect endpoint for the Cloud SQL instance"
-  value       = module.cloudsql.psc_service_attachment_uri
+output "cloudsql_replica_connection_name" {
+  description = "The connection name of the replica Cloud SQL instance"
+  value       = module.cloudsql.replica_connection_name
+}
+
+output "cloudsql_replica_private_ip" {
+  description = "The private IP address of the replica Cloud SQL instance"
+  value       = module.cloudsql.replica_private_ip_address
+}
+
+output "cloudsql_replica_psc_endpoint" {
+  description = "The Private Service Connect endpoint for the replica Cloud SQL instance"
+  value       = module.cloudsql.replica_psc_service_attachment_uri
 }
 
 output "cloudsql_database_name" {
@@ -100,7 +110,12 @@ output "cloudsql_database_name" {
   value       = module.cloudsql.database_name
 }
 
-output "cloudsql_self_link" {
-  description = "The URI of the Cloud SQL instance"
-  value       = module.cloudsql.self_link
+output "cloudsql_primary_self_link" {
+  description = "The URI of the primary Cloud SQL instance"
+  value       = module.cloudsql.primary_self_link
+}
+
+output "cloudsql_replica_self_link" {
+  description = "The URI of the replica Cloud SQL instance"
+  value       = module.cloudsql.replica_self_link
 }
