@@ -115,14 +115,6 @@ variable "deletion_protection" {
   default     = true
 }
 
-variable "psc_config" {
-  type = object({
-    enabled                   = bool
-    allowed_consumer_projects = list(string)
-  })
-  description = "Private Service Connect configuration"
-}
-
 variable "psc_address" {
   description = "The IP address for the Private Service Connect endpoint"
   type        = string

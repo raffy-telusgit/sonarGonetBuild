@@ -71,7 +71,6 @@ module "cloudsql" {
   maintenance_window_day  = var.maintenance_window_day
   database_flags          = var.database_flags
   deletion_protection     = var.deletion_protection
-  psc_config              = var.psc_config
   network                 = module.vpc.network_self_link
   vpc_connection          = module.vpc.private_vpc_connection
 }
