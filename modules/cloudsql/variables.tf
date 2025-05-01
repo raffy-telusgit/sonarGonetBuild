@@ -85,3 +85,8 @@ variable "network" {
   type        = string
   description = "The VPC network self-link to which the Cloud SQL instance should be connected"
 }
+
+variable "vpc_connection" {
+  type        = any
+  description = "The VPC peering connection to depend on"
+}

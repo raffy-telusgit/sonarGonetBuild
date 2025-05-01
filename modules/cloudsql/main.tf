@@ -33,11 +33,16 @@ resource "google_sql_database_instance" "instance" {
       ipv4_enabled                                  = false
       private_network                               = var.network
       enable_private_path_for_google_cloud_services = true
-      psc_config {
-        psc_enabled               = var.psc_config.enabled
-        allowed_consumer_projects = var.psc_config.allowed_consumer_projects
-      }
+      # Remove PSC config as we're using VPC peering
+      # psc_config {
+      #   psc_enabled               = var.psc_config.enabled
+      #   allowed_consumer_projects = var.psc_config.allowed_consumer_projects
+      # }
     }
+
+    depends_on = [
+      var.vpc_connection
+    ]
   }
 
   deletion_protection = var.deletion_protection
