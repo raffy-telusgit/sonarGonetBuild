@@ -22,7 +22,11 @@ This repository contains Terraform configurations for deploying infrastructure o
 │   │   ├── main.tf
 │   │   ├── outputs.tf
 │   │   └── variables.tf
-│   └── psc/
+│   ├── psc/
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── cloudsql/
 │       ├── main.tf
 │       ├── outputs.tf
 │       └── variables.tf
@@ -38,6 +42,39 @@ This repository contains Terraform configurations for deploying infrastructure o
   - `vm/`: Virtual Machine module
   - `vpc/`: VPC network module
 - `cloudbuild.yaml`: Cloud Build configuration for CI/CD
+
+## Architecture
+
+```mermaid
+graph TD
+    subgraph "Google Cloud Platform"
+        VPC[VPC Network]
+        Subnet[Subnet]
+        VM[VM Instance]
+        CloudSQL[Cloud SQL Instance]
+        PSC[Private Service Connect]
+        VPCPeering[VPC Peering]
+
+        VPC --> Subnet
+        Subnet --> VM
+        VPC --> VPCPeering
+        VPCPeering --> CloudSQL
+        VPC --> PSC
+        PSC --> |Google APIs| Internet
+        VM --> CloudSQL
+    end
+
+    style VPC fill:#f9f,stroke:#333,stroke-width:2px
+    style CloudSQL fill:#bbf,stroke:#333,stroke-width:2px
+    style VM fill:#bfb,stroke:#333,stroke-width:2px
+    style PSC fill:#ffb,stroke:#333,stroke-width:2px
+```
+
+The diagram illustrates the key components of our infrastructure:
+- A VPC network with a subnet hosting the VM instance
+- A Cloud SQL instance connected via VPC peering for private access
+- Private Service Connect (PSC) endpoint for secure access to Google APIs
+- All components are connected through private networking for enhanced security
 
 ## Usage
 

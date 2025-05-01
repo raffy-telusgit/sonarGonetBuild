@@ -30,6 +30,28 @@ resource "google_sql_database_instance" "instance" {
     }
 
     ip_configuration {
+      ipv4_enabled = false
+    }
+  }
+
+  deletion_protection = var.deletion_protection
+
+  lifecycle {
+    ignore_changes = [
+      settings[0].ip_configuration,
+    ]
+  }
+}
+
+resource "google_sql_database_instance" "instance_update" {
+  name                = var.db_server_name
+  project             = var.project_id
+  region              = var.backup_location
+  database_version    = var.db_version
+  master_instance_name = google_sql_database_instance.instance.name
+
+  settings {
+    ip_configuration {
       ipv4_enabled                                  = false
       private_network                               = var.network
       enable_private_path_for_google_cloud_services = true
@@ -39,7 +61,8 @@ resource "google_sql_database_instance" "instance" {
   deletion_protection = var.deletion_protection
 
   depends_on = [
-    var.vpc_connection
+    var.vpc_connection,
+    google_sql_database_instance.instance
   ]
 }
 
