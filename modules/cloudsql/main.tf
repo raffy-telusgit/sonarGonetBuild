@@ -39,13 +39,13 @@ resource "google_sql_database_instance" "instance" {
       #   allowed_consumer_projects = var.psc_config.allowed_consumer_projects
       # }
     }
-
-    depends_on = [
-      var.vpc_connection
-    ]
   }
 
   deletion_protection = var.deletion_protection
+
+  depends_on = [
+    var.vpc_connection
+  ]
 }
 
 resource "google_sql_database" "database" {
