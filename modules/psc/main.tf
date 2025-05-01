@@ -11,7 +11,7 @@ resource "google_compute_global_address" "private_service_connect" {
 resource "google_compute_global_forwarding_rule" "forwarding_rule_private_service_connect" {
   provider              = google-beta
   project               = var.project_id
-  name                  = "${var.network_name}-psc-forwarding-rule"
+  name                  = "pscfwdrule${substr(md5(var.network_name), 0, 8)}"
   target                = "all-apis"
   network               = var.network_id
   ip_address            = google_compute_global_address.private_service_connect.id
