@@ -51,6 +51,30 @@ resource "google_sql_database_instance" "instance_update" {
   master_instance_name = google_sql_database_instance.instance.name
 
   settings {
+    tier              = var.instance_tier
+    availability_type = var.availability_type
+
+    backup_configuration {
+      enabled                        = true
+      start_time                     = var.backup_start_time
+      location                       = var.backup_location
+      point_in_time_recovery_enabled = true
+    }
+
+    maintenance_window {
+      day          = var.maintenance_window_day
+      hour         = var.maintenance_window_hour
+      update_track = "stable"
+    }
+
+    dynamic "database_flags" {
+      for_each = var.database_flags
+      content {
+        name  = database_flags.key
+        value = database_flags.value
+      }
+    }
+
     ip_configuration {
       ipv4_enabled                                  = false
       private_network                               = var.network
